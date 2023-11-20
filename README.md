@@ -52,31 +52,4 @@ Several tools and libraries facilitate feature engineering in machine learning p
 
 Let's look at a simple example using Python and Pandas:
 
-```python
-import pandas as pd
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
 
-# Load dataset
-data = pd.read_csv('your_dataset.csv')
-
-# Perform feature engineering
-# Example: Scaling numerical features
-scaler = StandardScaler()
-data[['feature1', 'feature2']] = scaler.fit_transform(data[['feature1', 'feature2']])
-
-# Split the data
-X_train, X_test, y_train, y_test = train_test_split(data.drop('target', axis=1), data['target'], test_size=0.2, random_state=42)
-
-# Train a model
-model = RandomForestClassifier()
-model.fit(X_train, y_train)
-
-# Make predictions
-predictions = model.predict(X_test)
-
-# Evaluate the model
-accuracy = accuracy_score(y_test, predictions)
-print(f"Accuracy: {accuracy}")
